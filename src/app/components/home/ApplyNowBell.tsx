@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { Bell, CalendarDays, ChevronRight, X } from "lucide-react";
 
-const TARGET_DATE = new Date("2026-07-25T23:59:59").getTime();
+const TARGET_DATE = new Date("2026-08-30T23:59:59").getTime();
 
 function getTimeLeft() {
   const diff = Math.max(TARGET_DATE - Date.now(), 0);
@@ -92,7 +92,7 @@ export default function ApplyNowBell() {
 
           <div className="px-3.5 pb-3.5 pt-3.5 sm:px-5 sm:pb-4 sm:pt-4">
             <p className="text-center text-[10px] font-bold uppercase tracking-[0.12em] text-[color:var(--secondary)] sm:text-xs">
-              Application deadline: 25 July 2026
+              Application deadline: 30 August 2026
             </p>
 
             <div className="mt-3 grid grid-cols-4 gap-1.5 sm:gap-2">
