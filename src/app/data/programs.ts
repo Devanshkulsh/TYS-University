@@ -99,6 +99,35 @@ export const programCatalog: FacultyPrograms[] = [
         duration: "3 Years",
       },
       {
+        name: "Bsc CS",
+        category: "Undergraduate",
+        eligibility: "10+2 (Science stream), min. 50%",
+        duration: "3 Years",
+      },
+      {
+        name: "BSc IT",
+        category: "Undergraduate",
+        eligibility: "10+2 (Science stream), min. 50%",
+        duration: "3 Years",
+      },
+
+      {
+        name: "BSc Biotech",
+        category: "Undergraduate",
+        eligibility: "10+2 (Science stream), min. 50%",
+        duration: "3 Years",
+      },
+
+      {
+        name: "BSc (Ag.)",
+        category: "Undergraduate",
+        eligibility: "10+2 (Science stream), min. 50%",
+        duration: "3 Years",
+      },
+
+
+
+      {
         name: "M.Sc",
         category: "Postgraduate",
         specializations: ["Physics", "Chemistry", "Botany", "Maths"],
