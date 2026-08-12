@@ -120,20 +120,12 @@ export default function Footer() {
           <div>
             <Link href="/" className="inline-flex items-center gap-3">
               <Image
-                src="/logo.png"
+                src="/tys-logo-2.png"
                 alt="TYS University logo"
-                width={54}
-                height={54}
-                className="h-12 w-auto object-contain"
+                width={1050}
+                height={276}
+                className="h-14 w-auto object-contain"
               />
-              <div>
-                <p className="font-display text-2xl font-bold leading-none">
-                  TYS University
-                </p>
-                <p className="mt-1 text-xs uppercase tracking-[0.28em] text-[#f6c344]">
-                  Discover. Learn. Empower.
-                </p>
-              </div>
             </Link>
 
             <p className="mt-6 max-w-xs text-sm leading-7 text-white/68">
