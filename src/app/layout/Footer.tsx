@@ -240,11 +240,35 @@ export default function Footer() {
               </a>
               <a
                 href="tel:+919194798070"
-                aria-label="Call support desk number +91 9194798070"
+                aria-label="Call admission desk number +91 9194798070"
                 className="flex items-start gap-3 transition hover:text-white"
               >
                 <Phone size={17} className="mt-0.5 shrink-0 text-[#f6c344]" />
-                <span>Support Desk: +91 9194798070</span>
+                <span>Admission Desk: +91 9194798070</span>
+              </a>
+              <a
+                href="tel:+919194798071"
+                aria-label="Call admission desk number +91 9194798071"
+                className="flex items-start gap-3 transition hover:text-white"
+              >
+                <Phone size={17} className="mt-0.5 shrink-0 text-[#f6c344]" />
+                <span>Admission Desk: +91 9194798071</span>
+              </a>
+              <a
+                href="tel:+919194798072"
+                aria-label="Call admission desk number +91 9194798072"
+                className="flex items-start gap-3 transition hover:text-white"
+              >
+                <Phone size={17} className="mt-0.5 shrink-0 text-[#f6c344]" />
+                <span>Admission Desk: +91 9194798072</span>
+              </a>
+              <a
+                href="tel:+919194798073"
+                aria-label="Call admission desk number +91 9194798073"
+                className="flex items-start gap-3 transition hover:text-white"
+              >
+                <Phone size={17} className="mt-0.5 shrink-0 text-[#f6c344]" />
+                <span>Admission Desk: +91 9194798073</span>
               </a>
               <div className="flex items-start gap-3">
                 <MapPin size={17} className="mt-0.5 shrink-0 text-[#f6c344]" />
