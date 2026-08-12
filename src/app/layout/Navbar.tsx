@@ -251,28 +251,13 @@ export default function Navbar() {
         <div className="mx-auto flex max-w-480 items-center justify-between p-3 md:h-20 md:px-4">
           <Link href="/" className="flex shrink-0 items-center gap-2 md:gap-3">
             <Image
-              src="/logo.png"
+              src="/tys-logo-2.png"
               alt="TYS University logo"
-              width={80}
-              height={120}
-              className="h-10 w-auto shrink-0 object-contain md:h-15"
+              width={1050}
+              height={276}
+              className="h-10 w-auto shrink-0 object-contain md:h-14"
               priority
             />
-            <span className="shrink-0">
-              <span className="block text-base font-black uppercase leading-none md:text-xl">
-                TYS
-              </span>
-              <span className="block text-base font-black uppercase leading-none md:text-xl">
-                University
-              </span>
-              <span
-                className={`mt-0.5 block text-[8px] md:text-[10px] ${
-                  isScrolled ? "text-black/70" : "text-white/90"
-                }`}
-              >
-                Discover. Learn. Empower.
-              </span>
-            </span>
 
             <span
               className={`hidden items-center gap-2 rounded-full border px-2.5 py-1 shadow-[0_10px_24px_rgba(0,0,0,0.18)] sm:flex ${
