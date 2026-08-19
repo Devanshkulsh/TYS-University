@@ -52,7 +52,7 @@ const announcements = [
 ];
 
 const utilityLinks = [
-  { label: "CAREER", href: "#career" },
+  { label: "CAREER", href: "/career" },
   { label: "BLOGS", href: "#blogs" },
   { label: "CONTACT US", href: "#contact" },
 ];

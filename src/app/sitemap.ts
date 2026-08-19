@@ -51,5 +51,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
       images: [absoluteUrl("/logo.png")],
     },
+    {
+      url: `${siteUrl}/career`,
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.8,
+      images: [absoluteUrl("/careers/image1.jpeg")],
+    },
   ];
 }
