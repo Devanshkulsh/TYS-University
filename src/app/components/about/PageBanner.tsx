@@ -59,7 +59,7 @@ export default function PageBanner({
         />
       </svg>
 
-      <div className="relative mx-auto flex min-h-[330px] w-full max-w-7xl items-center px-5 py-16 sm:px-8 sm:py-20 md:min-h-[390px] md:py-24 lg:px-10">
+      <div className="relative mx-auto flex min-h-[430px] w-full max-w-7xl items-center px-5 pb-16 pt-36 sm:px-8 sm:pb-20 sm:pt-40 md:min-h-[540px] md:pb-24 md:pt-52 lg:px-10">
         <div className="max-w-5xl">
           <div className="flex items-center gap-3">
             <span

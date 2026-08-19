@@ -44,5 +44,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.75,
       images: [absoluteUrl("/logo.png")],
     },
+    {
+      url: `${siteUrl}/mandatory-disclosures`,
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.8,
+      images: [absoluteUrl("/logo.png")],
+    },
   ];
 }
