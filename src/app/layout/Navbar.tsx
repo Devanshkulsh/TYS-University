@@ -69,7 +69,7 @@ const navItems: NavItem[] = [
   {
     label: "ACADEMICS",
     links: [
-      { label: "Academic Calendar", href: "#academic-calendar" },
+      { label: "Academic Calendar", href: "/academic-calendar" },
       { label: "Departments", href: "#departments" },
       { label: "Examinations", href: "#examinations" },
     ],
