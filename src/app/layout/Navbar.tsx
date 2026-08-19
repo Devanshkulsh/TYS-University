@@ -5,14 +5,13 @@ import Image from "next/image";
 import Link from "next/link";
 import {
   ChevronDown,
-  ChevronLeft,
-  ChevronRight,
   ExternalLink,
   Menu,
   Phone,
   Search,
   X,
 } from "lucide-react";
+import RecruitmentMarquee from "@/app/components/shared/RecruitmentMarquee";
 
 const tollFreeNumber = "18008901705";
 const tollFreeDisplay = "1800 890 1705";
@@ -20,36 +19,6 @@ const tollFreeLabel = `Toll Free No.: ${tollFreeDisplay}`;
 const supportDeskNumber = "+919194798070";
 const supportDeskDisplay = "+91 9194798070";
 const supportDeskLabel = `Support Desk: ${supportDeskDisplay}`;
-
-const announcements = [
-  {
-    text: "Register Now for admission in TYSU",
-    href: "#apply",
-    cta: "REGISTER NOW",
-  },
-  {
-    text: "Admissions open for the 2026 academic session",
-    href: "#apply",
-    cta: "REGISTER NOW",
-  },
-  {
-    text: "Explore programs, scholarships, placements, and campus life",
-    href: "#apply",
-    cta: "REGISTER NOW",
-  },
-  {
-    text: tollFreeLabel,
-    href: `tel:${tollFreeNumber}`,
-    cta: "CALL NOW",
-    ariaLabel: `Call toll free number ${tollFreeDisplay}`,
-  },
-  {
-    text: supportDeskLabel,
-    href: `tel:${supportDeskNumber}`,
-    cta: "CALL NOW",
-    ariaLabel: `Call support desk number ${supportDeskDisplay}`,
-  },
-];
 
 const utilityLinks = [
   // { label: "CAREER", href: "/career" },
@@ -148,7 +117,6 @@ const socialLinks = [
 ];
 
 export default function Navbar() {
-  const [announcementIndex, setAnnouncementIndex] = useState(0);
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
@@ -159,8 +127,6 @@ export default function Navbar() {
     (item): item is Extract<NavItem, { links: { label: string; href: string }[] }> =>
       item.label === activeMenu && "links" in item,
   );
-  const announcement = announcements[announcementIndex];
-
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
@@ -171,16 +137,6 @@ export default function Navbar() {
 
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  const showPreviousAnnouncement = () => {
-    setAnnouncementIndex((current) =>
-      current === 0 ? announcements.length - 1 : current - 1,
-    );
-  };
-
-  const showNextAnnouncement = () => {
-    setAnnouncementIndex((current) => (current + 1) % announcements.length);
-  };
 
   const closeMenus = () => {
     setActiveMenu(null);
@@ -206,41 +162,7 @@ export default function Navbar() {
           : "text-white [text-shadow:0_1px_10px_rgba(0,0,0,0.45)]"
       }`}
     >
-      <div className="border-b border-white/10 bg-(--primary)/92 px-2 py-1.5 backdrop-blur-sm sm:h-9 sm:py-0">
-        <div className="mx-auto flex h-full max-w-480 items-center justify-between sm:justify-center">
-          <button
-            type="button"
-            aria-label="Previous announcement"
-            className="hidden px-2 opacity-70 transition hover:opacity-100 sm:block md:px-4"
-            onClick={showPreviousAnnouncement}
-          >
-            <ChevronLeft size={14} />
-          </button>
-
-          <div className="flex flex-1 flex-col items-center justify-center gap-1.5 text-center text-white sm:flex-row sm:gap-4">
-            <span className="text-[10px] font-medium leading-tight text-white sm:text-xs">
-              {announcement.text}
-            </span>
-
-            <a
-              href={announcement.href}
-              aria-label={announcement.ariaLabel}
-              className="shrink-0 rounded bg-accent px-3 py-1 text-[9px] font-bold tracking-wide text-foreground transition hover:bg-soft-background sm:text-[10px]"
-            >
-              {announcement.cta}
-            </a>
-          </div>
-
-          <button
-            type="button"
-            aria-label="Next announcement"
-            className="hidden px-2 opacity-70 transition hover:opacity-100 sm:block md:px-4"
-            onClick={showNextAnnouncement}
-          >
-            <ChevronRight size={14} />
-          </button>
-        </div>
-      </div>
+      <RecruitmentMarquee />
 
       <div
         className={`border-b backdrop-blur-md transition-colors duration-300 ${
