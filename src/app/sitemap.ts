@@ -65,5 +65,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
       images: [absoluteUrl("/logo.png")],
     },
+    {
+      url: `${siteUrl}/academic-calendar`,
+      lastModified,
+      changeFrequency: "yearly",
+      priority: 0.8,
+      images: [absoluteUrl("/logo.png")],
+    },
   ];
 }
