@@ -52,3 +52,27 @@ button {
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }
+
+@keyframes recruitment-marquee {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.recruitment-marquee-track {
+  animation: recruitment-marquee 24s linear infinite;
+}
+
+.recruitment-marquee-track:hover {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .recruitment-marquee-track {
+    animation: none;
+  }
+}
