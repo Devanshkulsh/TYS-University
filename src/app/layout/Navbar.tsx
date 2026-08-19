@@ -52,7 +52,8 @@ const announcements = [
 ];
 
 const utilityLinks = [
-  { label: "CAREER", href: "/career" },
+  // { label: "CAREER", href: "/career" },
+  { label: "RECRUITMENT", href: "/recruitment" },
   { label: "BLOGS", href: "#blogs" },
   { label: "CONTACT US", href: "#contact" },
 ];
@@ -135,10 +136,6 @@ const navItems: NavItem[] = [
       { label: "Innovation Lab", href: "#innovation" },
       { label: "Publications", href: "#publications" },
     ],
-  },
-  {
-    label: "MANDATORY DISCLOSURES",
-    href: "/mandatory-disclosures",
   },
 ];
 
@@ -298,7 +295,11 @@ export default function Navbar() {
                 key={link.label}
                 href={link.href}
                 className={`transition-colors hover:text-accent ${
-                  isScrolled ? "text-black/85" : "text-white/95"
+                  link.label === "RECRUITMENT"
+                    ? "rounded-full bg-accent px-3 py-1.5 font-bold text-foreground shadow-sm hover:bg-white hover:text-foreground"
+                    : isScrolled
+                      ? "text-black/85"
+                      : "text-white/95"
                 }`}
                 onClick={closeMenus}
               >
@@ -574,7 +575,11 @@ export default function Navbar() {
               <a
                 key={link.label}
                 href={link.href}
-                className="rounded border border-white/10 px-3 py-2 text-xs font-semibold transition hover:border-accent"
+                className={`rounded border px-3 py-2 text-xs font-semibold transition hover:border-accent ${
+                  link.label === "RECRUITMENT"
+                    ? "border-accent bg-accent text-foreground hover:bg-white"
+                    : "border-white/10"
+                }`}
                 onClick={closeMenus}
               >
                 {link.label}
