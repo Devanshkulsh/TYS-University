@@ -136,6 +136,10 @@ const navItems: NavItem[] = [
       { label: "Publications", href: "#publications" },
     ],
   },
+  {
+    label: "MANDATORY DISCLOSURES",
+    href: "/mandatory-disclosures",
+  },
 ];
 
 const socialLinks = [
@@ -399,7 +403,7 @@ export default function Navbar() {
                 {"href" in item ? (
                   <Link
                     href={item.href}
-                    className={`flex h-full items-center gap-1.5 px-4 text-xs font-bold tracking-[1px] transition-colors hover:text-accent lg:px-6 lg:text-sm ${
+                    className={`flex h-full items-center gap-1 px-3 text-[10px] font-bold tracking-[0.6px] transition-colors hover:text-accent lg:px-4 lg:text-xs ${
                       isScrolled ? "text-black" : "text-white"
                     }`}
                     onClick={closeMenus}
@@ -410,7 +414,7 @@ export default function Navbar() {
                   <button
                     type="button"
                     aria-expanded={isActive}
-                    className={`flex h-full items-center gap-1.5 px-4 text-xs font-bold tracking-[1px] transition-colors hover:text-accent lg:px-6 lg:text-sm ${
+                    className={`flex h-full items-center gap-1 px-3 text-[10px] font-bold tracking-[0.6px] transition-colors hover:text-accent lg:px-4 lg:text-xs ${
                       isScrolled ? "text-black" : "text-white"
                     }`}
                     onClick={() =>
