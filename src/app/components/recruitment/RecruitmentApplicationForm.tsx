@@ -1,9 +1,18 @@
 "use client";
 
 import { type FormEvent, useRef, useState } from "react";
-import { CheckCircle2, Download, Printer, Trash2 } from "lucide-react";
+import { CheckCircle2, Download, FileUp, Printer, Trash2 } from "lucide-react";
 
 type SubmitStatus = "idle" | "saved" | "cleared" | "error";
+type FileUploadData = {
+  name: string;
+  size: number;
+  type: string;
+};
+type ApplicationDataValue =
+  | FormDataEntryValue
+  | FileUploadData
+  | Record<string, string>[];
 
 const educationRows = [
   "10th or Equivalent",
@@ -125,6 +134,42 @@ function TextAreaField({
   );
 }
 
+function FileField({
+  id,
+  label,
+  hint,
+  required = false,
+}: {
+  id: string;
+  label: React.ReactNode;
+  hint?: string;
+  required?: boolean;
+}) {
+  return (
+    <div>
+      <label className={labelClass} htmlFor={id}>
+        {label} {required && <span className="text-red-700">*</span>}
+        {hint && (
+          <span className="mt-1 block text-xs font-medium normal-case tracking-normal text-foreground/55">
+            {hint}
+          </span>
+        )}
+      </label>
+      <div className="flex min-h-11 items-center gap-3 rounded-md border border-black/15 bg-white px-3 py-2 text-sm text-foreground transition focus-within:border-secondary focus-within:ring-3 focus-within:ring-secondary/10">
+        <FileUp className="size-4 shrink-0 text-secondary" aria-hidden="true" />
+        <input
+          id={id}
+          name={id}
+          className="w-full text-sm text-foreground file:mr-4 file:rounded-md file:border-0 file:bg-primary file:px-3 file:py-2 file:text-xs file:font-bold file:uppercase file:tracking-[0.04em] file:text-white hover:file:bg-secondary"
+          type="file"
+          accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+          required={required}
+        />
+      </div>
+    </div>
+  );
+}
+
 export default function RecruitmentApplicationForm() {
   const formRef = useRef<HTMLFormElement>(null);
   const [status, setStatus] = useState<SubmitStatus>("idle");
@@ -135,11 +180,18 @@ export default function RecruitmentApplicationForm() {
     if (!form) return null;
 
     const formData = new FormData(form);
-    const data: Record<string, FormDataEntryValue | Record<string, string>[]> = {};
+    const data: Record<string, ApplicationDataValue> = {};
 
     for (const [key, value] of formData.entries()) {
       if (!key.startsWith("education.")) {
-        data[key] = value;
+        data[key] =
+          value instanceof File
+            ? {
+                name: value.name,
+                size: value.size,
+                type: value.type,
+              }
+            : value;
       }
     }
 
@@ -448,6 +500,15 @@ export default function RecruitmentApplicationForm() {
                 />
               </div>
             ))}
+          </div>
+
+          <div className="mt-5">
+            <FileField
+              id="cvResume"
+              label="Upload CV / Resume"
+              hint="Accepted formats: PDF, DOC, or DOCX"
+              required
+            />
           </div>
 
           <div className="mt-5 border border-black/10 border-l-4 border-l-accent bg-[#F9F6EF] p-5 text-sm leading-7 text-foreground/75">
