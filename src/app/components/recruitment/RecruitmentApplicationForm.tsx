@@ -43,7 +43,7 @@ const instructions = [
   "The advertisement number, post applied for, and Pin Code must be clearly mentioned in the application form.",
   "Incomplete applications or those not on the prescribed format will be rejected.",
   "The university reserves the right to fill or not fill any advertised post, correct the advertisement, cancel it at any stage, or require a separate application per post.",
-  "SC/ST/OBC/EWS candidates must submit a valid U.P. Government certificate in the prescribed format, issued within six months prior to the closing date.",
+  "SC/ST/OBC/EWS candidates must submit a valid U.P. Government certificate in the prescribed format, issued within twelve months prior to the closing date.",
   "Candidates employed in a private university/college must submit a No Objection Certificate from their employer.",
   "Concealment of facts, false documents, misleading information, or canvassing will result in disqualification.",
   "Interview letters and other notices will be sent only by email; please check the official website regularly.",
