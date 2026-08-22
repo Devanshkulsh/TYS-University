@@ -138,11 +138,13 @@ function FileField({
   id,
   label,
   hint,
+  accept = ".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document",
   required = false,
 }: {
   id: string;
   label: React.ReactNode;
   hint?: string;
+  accept?: string;
   required?: boolean;
 }) {
   return (
@@ -162,7 +164,7 @@ function FileField({
           name={id}
           className="w-full text-sm text-foreground file:mr-4 file:rounded-md file:border-0 file:bg-primary file:px-3 file:py-2 file:text-xs file:font-bold file:uppercase file:tracking-[0.04em] file:text-white hover:file:bg-secondary"
           type="file"
-          accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+          accept={accept}
           required={required}
         />
       </div>
@@ -538,9 +540,18 @@ export default function RecruitmentApplicationForm() {
             </div>
           </div>
 
-          <div className="mt-5 grid gap-5 md:grid-cols-2">
+          <div className="mt-5 grid gap-5 md:grid-cols-3">
             <TextField id="signDate" label="Date" placeholder="DD/MM/YYYY" />
             <TextField id="signPlace" label="Place" />
+            <div>
+              <p className={labelClass}>Candidate Signature</p>
+              <div
+                className="flex min-h-24 items-end justify-center rounded-md border border-dashed border-black/25 bg-white px-3 py-3 text-xs font-semibold uppercase tracking-[0.04em] text-foreground/50"
+                aria-label="Blank space for candidate physical signature"
+              >
+                Signature
+              </div>
+            </div>
           </div>
 
           <div className="mt-10 border border-black/10 bg-[#FBFAF6] p-5 text-sm leading-7 text-foreground/70">
