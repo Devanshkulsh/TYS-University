@@ -3,7 +3,7 @@
 import { type FormEvent, useRef, useState } from "react";
 import { CheckCircle2, Download, FileUp, Printer, Trash2 } from "lucide-react";
 
-type SubmitStatus = "idle" | "saved" | "cleared" | "error";
+type SubmitStatus = "idle" | "submitting" | "saved" | "cleared" | "error";
 type FileUploadData = {
   name: string;
   size: number;
@@ -209,19 +209,7 @@ export default function RecruitmentApplicationForm() {
     return data;
   };
 
-  const handleSave = () => {
-    const form = formRef.current;
-    if (!form) return;
-
-    if (!form.reportValidity()) {
-      setStatus("error");
-      setMessage("Please complete the required fields before saving.");
-      return;
-    }
-
-    const data = collectData();
-    if (!data) return;
-
+  const downloadBackup = (data: Record<string, ApplicationDataValue>) => {
     const blob = new Blob([JSON.stringify(data, null, 2)], {
       type: "application/json",
     });
@@ -236,11 +224,57 @@ export default function RecruitmentApplicationForm() {
     anchor.click();
     anchor.remove();
     URL.revokeObjectURL(url);
+  };
 
-    setStatus("saved");
-    setMessage(
-      "Filled data saved. Keep this JSON file as a backup and print the completed form for submission.",
-    );
+  const handleSave = async () => {
+    const form = formRef.current;
+    if (!form) return;
+
+    if (!form.reportValidity()) {
+      setStatus("error");
+      setMessage("Please complete the required fields before saving.");
+      return;
+    }
+
+    const data = collectData();
+    if (!data) return;
+
+    setStatus("submitting");
+    setMessage("Submitting application...");
+
+    try {
+      const response = await fetch("/api/recruitment", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+      const result = (await response.json().catch(() => null)) as {
+        result?: string;
+        message?: string;
+      } | null;
+
+      if (!response.ok || result?.result !== "success") {
+        throw new Error(
+          result?.message ?? "Google Sheets rejected the submission.",
+        );
+      }
+
+      downloadBackup(data);
+      setStatus("saved");
+      setMessage(
+        "Application submitted to Google Sheets. A JSON backup has also been saved.",
+      );
+    } catch (error) {
+      console.error("Recruitment application submission failed:", error);
+      setStatus("error");
+      setMessage(
+        error instanceof Error
+          ? error.message
+          : "Could not submit to Google Sheets. Please try again.",
+      );
+    }
   };
 
   const handlePrint = () => {
@@ -256,7 +290,7 @@ export default function RecruitmentApplicationForm() {
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    handleSave();
+    void handleSave();
   };
 
   return (
@@ -568,10 +602,11 @@ export default function RecruitmentApplicationForm() {
           <div className="mt-9 flex flex-wrap justify-center gap-3 print:hidden">
             <button
               type="submit"
+              disabled={status === "submitting"}
               className="inline-flex items-center gap-2 rounded-md bg-primary px-5 py-3 font-display text-sm font-extrabold uppercase tracking-[0.04em] text-white transition hover:bg-secondary"
             >
               <Download className="size-4" />
-              Save Filled Data
+              {status === "submitting" ? "Submitting..." : "Submit Application"}
             </button>
             <button
               type="button"
