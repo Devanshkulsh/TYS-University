@@ -158,8 +158,8 @@ export default function Navbar() {
     <header
       className={`fixed left-0 top-0 z-50 w-full transition-colors duration-300 ${
         isScrolled
-          ? "text-black text-shadow-none"
-          : "text-white [text-shadow:0_1px_10px_rgba(0,0,0,0.45)]"
+          ? "text-black"
+          : "text-white md:[text-shadow:0_1px_10px_rgba(0,0,0,0.45)]"
       }`}
     >
       <RecruitmentMarquee />
@@ -418,7 +418,7 @@ export default function Navbar() {
       {isMobileMenuOpen ? (
         <div className="max-h-[calc(100vh-88px)] overflow-y-auto border-t border-black/10 bg-[#F4F1EC] px-4 py-5 text-black shadow-2xl lg:hidden">
           <div className="grid gap-3">
-            <div className="flex items-center gap-3 rounded-2xl border border-[#D4A96A]/25 bg-white px-4 py-3 shadow-sm">
+            <div className="flex items-center gap-3 rounded-2xl border  bg-white px-4 py-3 shadow-sm">
               <Image
                 src="/feature-image/20+.png"
                 alt="20 plus years educational legacy"
