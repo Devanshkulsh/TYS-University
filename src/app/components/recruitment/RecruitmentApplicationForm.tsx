@@ -377,7 +377,7 @@ export default function RecruitmentApplicationForm() {
               />
               <p className="mt-2 text-xs leading-5 text-foreground/62">
                 SC/ST/OBC/EWS candidates must attach a valid U.P. Government
-                certificate issued within 6 months of the closing date.
+                certificate issued within 12 months of the closing date.
               </p>
             </div>
             <TextField id="domicile" label="15. Domicile" placeholder="U.P. / Non U.P." />
